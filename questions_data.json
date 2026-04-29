@@ -1,0 +1,384 @@
+{
+  "questions": [
+    {
+      "id": "Q1",
+      "text": "开场发球：你是全场焦点，手中握着决定节奏的球。",
+      "options": [
+        {
+          "id": "A",
+          "text": "抛球极高，全身发力跳发，追求开场直接 ACE。",
+          "scores": {
+            "ATTACKER": 2,
+            "LEADER": 1
+          }
+        },
+        {
+          "id": "B",
+          "text": "稳稳发出上手飘球，瞄准对方一传最弱的区域。",
+          "scores": {
+            "GUARDIAN": 2,
+            "STRATEGIST": 1
+          }
+        },
+        {
+          "id": "C",
+          "text": "大喊一声“看好这球！”，用充满自信的动作点燃全场。",
+          "scores": {
+            "CHEER": 2,
+            "LEADER": 1
+          }
+        },
+        {
+          "id": "D",
+          "text": "观察对方接应位和副攻的间隙，发一个下沉短球。",
+          "scores": {
+            "TACTICIAN": 2,
+            "STRATEGIST": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "Q2",
+      "text": "极限救球：一传接飞，球直奔裁判椅而去。",
+      "options": [
+        {
+          "id": "A",
+          "text": "像炮弹一样冲出去，尝试在空中强行把球“抡”过网。",
+          "scores": {
+            "ATTACKER": 2,
+            "LEADER": 1
+          }
+        },
+        {
+          "id": "B",
+          "text": "全速冲刺，尽量在倒地前把球垫高到场内中心。",
+          "scores": {
+            "GUARDIAN": 2,
+            "STRATEGIST": 1
+          }
+        },
+        {
+          "id": "C",
+          "text": "哪怕救不到也要飞身鱼跃，用拼劲让全队士气大振。",
+          "scores": {
+            "CHEER": 2,
+            "LEADER": 1
+          }
+        },
+        {
+          "id": "D",
+          "text": "快速判断轨迹，若救球无望立刻指挥队友回位防守。",
+          "scores": {
+            "TACTICIAN": 2,
+            "STRATEGIST": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "Q3",
+      "text": "二传尴尬位：一传失误把球垫到了三米线外。",
+      "options": [
+        {
+          "id": "A",
+          "text": "根本不考虑传球，直接起跳反手二次暴扣。",
+          "scores": {
+            "ATTACKER": 2,
+            "LEADER": 1
+          }
+        },
+        {
+          "id": "B",
+          "text": "跑位到位，放弃华丽动作，用最稳的姿态传高球给主攻。",
+          "scores": {
+            "GUARDIAN": 2,
+            "STRATEGIST": 1
+          }
+        },
+        {
+          "id": "C",
+          "text": "大喊“我的！”，凭本能把球往对方防守空档一怼。",
+          "scores": {
+            "CHEER": 2,
+            "LEADER": 1
+          }
+        },
+        {
+          "id": "D",
+          "text": "用背传动作吸引拦网，实际分球给后排插上的接应。",
+          "scores": {
+            "TACTICIAN": 2,
+            "STRATEGIST": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "Q4",
+      "text": "强行突破：你起跳扣球，对面三个人已经封死了线路。",
+      "options": [
+        {
+          "id": "A",
+          "text": "既然封死了，就用更硬的力量强行打穿对方的拦网手。",
+          "scores": {
+            "ATTACKER": 2,
+            "LEADER": 1
+          }
+        },
+        {
+          "id": "B",
+          "text": "紧急收力，瞄准拦网手的外侧轻轻一抹，骗取打手出界。",
+          "scores": {
+            "GUARDIAN": 2,
+            "STRATEGIST": 1
+          }
+        },
+        {
+          "id": "C",
+          "text": "在空中临时改变姿势，打一个角度极其刁钻的直线。",
+          "scores": {
+            "CHEER": 2,
+            "LEADER": 1
+          }
+        },
+        {
+          "id": "D",
+          "text": "捕捉拦网手下降的瞬间，突然收力变扣为吊。",
+          "scores": {
+            "TACTICIAN": 2,
+            "STRATEGIST": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "Q5",
+      "text": "决胜时刻：24:24 平，这一分定生死。",
+      "options": [
+        {
+          "id": "A",
+          "text": "眼神锁定二传：“把球给我，这分我必拿！”",
+          "scores": {
+            "ATTACKER": 2,
+            "LEADER": 1
+          }
+        },
+        {
+          "id": "B",
+          "text": "降低重心，手指触地，大脑里反复演练接球动作。",
+          "scores": {
+            "GUARDIAN": 2,
+            "STRATEGIST": 1
+          }
+        },
+        {
+          "id": "C",
+          "text": "疯狂击掌大吼，用高分贝的呐喊盖过场上的紧张。",
+          "scores": {
+            "CHEER": 2,
+            "LEADER": 1
+          }
+        },
+        {
+          "id": "D",
+          "text": "观察对面二传的微表情，预判他们下一步的进攻点。",
+          "scores": {
+            "TACTICIAN": 2,
+            "STRATEGIST": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "Q6",
+      "text": "队友失误：队友接了个“大呲花”，直接白送一分。",
+      "options": [
+        {
+          "id": "A",
+          "text": "拍拍手大喊：“振作点！这球不该丢，下个我补回来！”",
+          "scores": {
+            "ATTACKER": 2,
+            "LEADER": 1
+          }
+        },
+        {
+          "id": "B",
+          "text": "走过去拍拍对方，小声沟通刚才的接球重心问题。",
+          "scores": {
+            "GUARDIAN": 2,
+            "STRATEGIST": 1
+          }
+        },
+        {
+          "id": "C",
+          "text": "第一时间冲过去击掌，大笑一声：“没事，下一球！”",
+          "scores": {
+            "CHEER": 2,
+            "LEADER": 1
+          }
+        },
+        {
+          "id": "D",
+          "text": "沉默但快速分析对方发球规律，准备下次战术抵消。",
+          "scores": {
+            "TACTICIAN": 2,
+            "STRATEGIST": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "Q7",
+      "text": "拦网成功：你单人拦死了对方的重扣钉地板。",
+      "options": [
+        {
+          "id": "A",
+          "text": "疯狂捶胸，盯着对方攻手的眼睛展现统治力。",
+          "scores": {
+            "ATTACKER": 2,
+            "LEADER": 1
+          }
+        },
+        {
+          "id": "B",
+          "text": "只是简单击掌，然后立刻退后准备下一次防守位。",
+          "scores": {
+            "GUARDIAN": 2,
+            "STRATEGIST": 1
+          }
+        },
+        {
+          "id": "C",
+          "text": "全场飞奔庆祝，甚至想和队友来个复杂的庆祝动作。",
+          "scores": {
+            "CHEER": 2,
+            "LEADER": 1
+          }
+        },
+        {
+          "id": "D",
+          "text": "露出一丝深藏功名的微笑：就知道他要打这。",
+          "scores": {
+            "TACTICIAN": 2,
+            "STRATEGIST": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "Q8",
+      "text": "暂停时间：球队落后，大家围在一起。",
+      "options": [
+        {
+          "id": "A",
+          "text": "抢过战术板：“我们要多打进攻，球多给我！”",
+          "scores": {
+            "ATTACKER": 2,
+            "LEADER": 1
+          }
+        },
+        {
+          "id": "B",
+          "text": "安静喝水，眼神专注地盯着教练布置的每一个站位。",
+          "scores": {
+            "GUARDIAN": 2,
+            "STRATEGIST": 1
+          }
+        },
+        {
+          "id": "C",
+          "text": "不停地给队友打气，试图找回全队的进攻节奏。",
+          "scores": {
+            "CHEER": 2,
+            "LEADER": 1
+          }
+        },
+        {
+          "id": "D",
+          "text": "指出细节：“副攻刚才慢了半秒，我们要打时间差。”",
+          "scores": {
+            "TACTICIAN": 2,
+            "STRATEGIST": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "Q9",
+      "text": "临时改行：教练让你打一个从未练过的位置。",
+      "options": [
+        {
+          "id": "A",
+          "text": "“没问题，看我怎么用这个位置打崩对面！”",
+          "scores": {
+            "ATTACKER": 2,
+            "LEADER": 1
+          }
+        },
+        {
+          "id": "B",
+          "text": "很有压力但表示服从，立刻请教队友站位细节。",
+          "scores": {
+            "GUARDIAN": 2,
+            "STRATEGIST": 1
+          }
+        },
+        {
+          "id": "C",
+          "text": "兴奋感拉满，觉得这种跨界挑战简直酷毙了。",
+          "scores": {
+            "CHEER": 2,
+            "LEADER": 1
+          }
+        },
+        {
+          "id": "D",
+          "text": "“好的，给我两分钟，我观察一下对面在这个位的空档。”",
+          "scores": {
+            "TACTICIAN": 2,
+            "STRATEGIST": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "Q10",
+      "text": "排球爽点：你为什么离不开排球？",
+      "options": [
+        {
+          "id": "A",
+          "text": "那个势大力沉、砸在地板上有回声的钉地板扣杀。",
+          "scores": {
+            "ATTACKER": 2,
+            "LEADER": 1
+          }
+        },
+        {
+          "id": "B",
+          "text": "整个团队通过六人连接、球永不落地的极限守护。",
+          "scores": {
+            "GUARDIAN": 2,
+            "STRATEGIST": 1
+          }
+        },
+        {
+          "id": "C",
+          "text": "进球后和队友拥抱呐喊、全身心沉浸其中的瞬间。",
+          "scores": {
+            "CHEER": 2,
+            "LEADER": 1
+          }
+        },
+        {
+          "id": "D",
+          "text": "成功识破对手意图、并用智商碾压对方的快感。",
+          "scores": {
+            "TACTICIAN": 2,
+            "STRATEGIST": 1
+          }
+        }
+      ]
+    }
+  ]
+}

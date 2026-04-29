@@ -1,0 +1,89 @@
+{
+  "matching_rule": "系统统计 A/B/C/D 得分，取最高两个维度组合",
+  "character_matches": [
+    {
+      "score_combination": "AD",
+      "nickname": "二次猿",
+      "character_name": "抢戏成瘾的二传",
+      "highlight_moment": "天生的破局者：你的偷袭总能奇迹般撕开防线。",
+      "real_comment": "别演一个人的武林了，没人传球给你吗？"
+    },
+    {
+      "score_combination": "AB",
+      "nickname": "独奏者",
+      "character_name": "被迫营业的卷王",
+      "highlight_moment": "绝对的战神：你一个人就能撑起半个赛场。",
+      "real_comment": "嫌弃感溢出屏幕，建议报单人赛。"
+    },
+    {
+      "score_combination": "AC",
+      "nickname": "批发商",
+      "character_name": "自杀式发球专家",
+      "highlight_moment": "重炮手：只要球过网，对面接应就吓出一身冷汗。",
+      "real_comment": "发球像感情：仪式感拉满，但从不进圈。"
+    },
+    {
+      "score_combination": "BD",
+      "nickname": "棉花糖",
+      "character_name": "自带减速的主攻",
+      "highlight_moment": "防御专家：失误率极低，能生生把对方磨崩溃。",
+      "real_comment": "扣球像按摩，慢到对方能思考晚饭。"
+    },
+    {
+      "score_combination": "BA",
+      "nickname": "老中医",
+      "character_name": "随缘流钓鱼专家",
+      "highlight_moment": "节奏大师：用最少体力换取最大得分效率。",
+      "real_comment": "专门欺负弱小，这种养老打法好意思吗？"
+    },
+    {
+      "score_combination": "BC",
+      "nickname": "擦亮师",
+      "character_name": "卑微的垫球奴隶",
+      "highlight_moment": "守护神：淤青是勋章，没有你就没有进攻。",
+      "real_comment": "接得再多，队友也能把它扣飞。"
+    },
+    {
+      "score_combination": "CA",
+      "nickname": "尖叫鸡",
+      "character_name": "球场氛围组核心",
+      "highlight_moment": "永动机：只要你在，队伍的气势永远不倒。",
+      "real_comment": "嗓门是唯一武器，建议去参加选秀。"
+    },
+    {
+      "score_combination": "CB",
+      "nickname": "复读机",
+      "character_name": "道歉区永久居民",
+      "highlight_moment": "润滑剂：主动担责，迅速平复尴尬气氛。",
+      "real_comment": "喊了50次“我的”，球落地你跑得最快。"
+    },
+    {
+      "score_combination": "CD",
+      "nickname": "高奢挂件",
+      "character_name": "全款装备玩家",
+      "highlight_moment": "门面担当：极大地提升了赛场的视觉专业度。",
+      "real_comment": "2000块的鞋，10块钱的技术。"
+    },
+    {
+      "score_combination": "DB",
+      "nickname": "懂王",
+      "character_name": "战术纸上谈兵者",
+      "highlight_moment": "理论家：视角毒辣，总能指出对方弱点。",
+      "real_comment": "讲得像郎平，站得像石碑。大脑在打球。"
+    },
+    {
+      "score_combination": "DC",
+      "nickname": "碰瓷王",
+      "character_name": "网前诈骗艺术家",
+      "highlight_moment": "心理大师：聪明地利用规则，玩弄对方心态。",
+      "real_comment": "演技足拿奥斯卡，可惜这里是体育馆。"
+    },
+    {
+      "score_combination": "DA",
+      "nickname": "景观位",
+      "character_name": "人形网前筛子",
+      "highlight_moment": "威慑力：你往那一站，对方心里多少会发虚。",
+      "real_comment": "拦网效果跟挂个充气娃娃差不多。"
+    }
+  ]
+}

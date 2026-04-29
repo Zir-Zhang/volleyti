@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>排球赛场人格测试</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;600;700;900&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .option-btn {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    @media (hover: none) {
+      .option-btn:hover {
+        background: #ffffff !important;
+        border-color: rgb(229 231 235) !important;
+      }
+    }
+  </style>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            ink: "#1f2937",
+            accentYellow: "#facc15",
+            accentBlue: "#7dd3fc"
+          }
+        }
+      }
+    };
+  </script>
+</head>
+<body class="min-h-screen bg-gradient-to-b from-white via-slate-50/30 to-sky-50/40 text-ink font-['Noto_Sans_SC']">
+  <main id="app" class="min-h-screen"></main>
+
+  <script>
+    const QUESTIONS_DATA = {
+      "questions": [
+        { "id": "Q1", "text": "开场发球：你是全场焦点，手中握着决定节奏的球。", "options": [ { "id": "A", "text": "抛球极高，全身发力跳发，追求开场直接 ACE。" }, { "id": "B", "text": "稳稳发出上手飘球，瞄准对方一传最弱的区域。" }, { "id": "C", "text": "大喊一声“看好这球！”，用充满自信的动作点燃全场。" }, { "id": "D", "text": "观察对方接应位和副攻的间隙，发一个下沉短球。" } ] },
+        { "id": "Q2", "text": "极限救球：一传接飞，球直奔裁判椅而去。", "options": [ { "id": "A", "text": "像炮弹一样冲出去，尝试在空中强行把球“抡”过网。" }, { "id": "B", "text": "全速冲刺，尽量在倒地前把球垫高到场内中心。" }, { "id": "C", "text": "哪怕救不到也要飞身鱼跃，用拼劲让全队士气大振。" }, { "id": "D", "text": "快速判断轨迹，若救球无望立刻指挥队友回位防守。" } ] },
+        { "id": "Q3", "text": "二传尴尬位：一传失误把球垫到了三米线外。", "options": [ { "id": "A", "text": "根本不考虑传球，直接起跳反手二次暴扣。" }, { "id": "B", "text": "跑位到位，放弃华丽动作，用最稳的姿态传高球给主攻。" }, { "id": "C", "text": "大喊“我的！”，凭本能把球往对方防守空档一怼。" }, { "id": "D", "text": "用背传动作吸引拦网，实际分球给后排插上的接应。" } ] },
+        { "id": "Q4", "text": "强行突破：你起跳扣球，对面三个人已经封死了线路。", "options": [ { "id": "A", "text": "既然封死了，就用更硬的力量强行打穿对方的拦网手。" }, { "id": "B", "text": "紧急收力，瞄准拦网手的外侧轻轻一抹，骗取打手出界。" }, { "id": "C", "text": "在空中临时改变姿势，打一个角度极其刁钻的直线。" }, { "id": "D", "text": "捕捉拦网手下降的瞬间，突然收力变扣为吊。" } ] },
+        { "id": "Q5", "text": "决胜时刻：24:24 平，这一分定生死。", "options": [ { "id": "A", "text": "眼神锁定二传：“把球给我，这分我必拿！”" }, { "id": "B", "text": "降低重心，手指触地，大脑里反复演练接球动作。" }, { "id": "C", "text": "疯狂击掌大吼，用高分贝的呐喊盖过场上的紧张。" }, { "id": "D", "text": "观察对面二传的微表情，预判他们下一步的进攻点。" } ] },
+        { "id": "Q6", "text": "队友失误：队友接了个“大呲花”，直接白送一分。", "options": [ { "id": "A", "text": "拍拍手大喊：“振作点！这球不该丢，下个我补回来！”" }, { "id": "B", "text": "走过去拍拍对方，小声沟通刚才的接球重心问题。" }, { "id": "C", "text": "第一时间冲过去击掌，大笑一声：“没事，下一球！”" }, { "id": "D", "text": "沉默但快速分析对方发球规律，准备下次战术抵消。" } ] },
+        { "id": "Q7", "text": "拦网成功：你单人拦死了对方的重扣钉地板。", "options": [ { "id": "A", "text": "疯狂捶胸，盯着对方攻手的眼睛展现统治力。" }, { "id": "B", "text": "只是简单击掌，然后立刻退后准备下一次防守位。" }, { "id": "C", "text": "全场飞奔庆祝，甚至想和队友来个复杂的庆祝动作。" }, { "id": "D", "text": "露出一丝深藏功名的微笑：就知道他要打这。" } ] },
+        { "id": "Q8", "text": "暂停时间：球队落后，大家围在一起。", "options": [ { "id": "A", "text": "抢过战术板：“我们要多打进攻，球多给我！”" }, { "id": "B", "text": "安静喝水，眼神专注地盯着教练布置的每一个站位。" }, { "id": "C", "text": "不停地给队友打气，试图找回全队的进攻节奏。" }, { "id": "D", "text": "指出细节：“副攻刚才慢了半秒，我们要打时间差。”" } ] },
+        { "id": "Q9", "text": "临时改行：教练让你打一个从未练过的位置。", "options": [ { "id": "A", "text": "“没问题，看我怎么用这个位置打崩对面！”" }, { "id": "B", "text": "很有压力但表示服从，立刻请教队友站位细节。" }, { "id": "C", "text": "兴奋感拉满，觉得这种跨界挑战简直酷毙了。" }, { "id": "D", "text": "“好的，给我两分钟，我观察一下对面在这个位的空档。”" } ] },
+        { "id": "Q10", "text": "排球爽点：你为什么离不开排球？", "options": [ { "id": "A", "text": "那个势大力沉、砸在地板上有回声的钉地板扣杀。" }, { "id": "B", "text": "整个团队通过六人连接、球永不落地的极限守护。" }, { "id": "C", "text": "进球后和队友拥抱呐喊、全身心沉浸其中的瞬间。" }, { "id": "D", "text": "成功识破对手意图、并用智商碾压对方的快感。" } ] }
+      ]
+    };
+
+    const CHARACTER_RULES = {
+      "matching_rule": "系统统计 A/B/C/D 得分，取最高两个维度组合",
+      "character_matches": [
+        { "score_combination": "AD", "nickname": "二次猿", "character_name": "抢戏成瘾的二传", "highlight_moment": "天生的破局者：你的偷袭总能奇迹般撕开防线。", "real_comment": "别演一个人的武林了，没人传球给你吗？" },
+        { "score_combination": "AB", "nickname": "独奏者", "character_name": "被迫营业的卷王", "highlight_moment": "绝对的战神：你一个人就能撑起半个赛场。", "real_comment": "嫌弃感溢出屏幕，建议报单人赛。" },
+        { "score_combination": "AC", "nickname": "批发商", "character_name": "自杀式发球专家", "highlight_moment": "重炮手：只要球过网，对面接应就吓出一身冷汗。", "real_comment": "发球像感情：仪式感拉满，但从不进圈。" },
+        { "score_combination": "BD", "nickname": "棉花糖", "character_name": "自带减速的主攻", "highlight_moment": "防御专家：失误率极低，能生生把对方磨崩溃。", "real_comment": "扣球像按摩，慢到对方能思考晚饭。" },
+        { "score_combination": "BA", "nickname": "老中医", "character_name": "随缘流钓鱼专家", "highlight_moment": "节奏大师：用最少体力换取最大得分效率。", "real_comment": "专门欺负弱小，这种养老打法好意思吗？" },
+        { "score_combination": "BC", "nickname": "擦亮师", "character_name": "卑微的垫球奴隶", "highlight_moment": "守护神：淤青是勋章，没有你就没有进攻。", "real_comment": "接得再多，队友也能把它扣飞。" },
+        { "score_combination": "CA", "nickname": "尖叫鸡", "character_name": "球场氛围组核心", "highlight_moment": "永动机：只要你在，队伍的气势永远不倒。", "real_comment": "嗓门是唯一武器，建议去参加选秀。" },
+        { "score_combination": "CB", "nickname": "复读机", "character_name": "道歉区永久居民", "highlight_moment": "润滑剂：主动担责，迅速平复尴尬气氛。", "real_comment": "喊了50次“我的”，球落地你跑得最快。" },
+        { "score_combination": "CD", "nickname": "高奢挂件", "character_name": "全款装备玩家", "highlight_moment": "门面担当：极大地提升了赛场的视觉专业度。", "real_comment": "2000块的鞋，10块钱的技术。" },
+        { "score_combination": "DB", "nickname": "懂王", "character_name": "战术纸上谈兵者", "highlight_moment": "理论家：视角毒辣，总能指出对方弱点。", "real_comment": "讲得像郎平，站得像石碑。大脑在打球。" },
+        { "score_combination": "DC", "nickname": "碰瓷王", "character_name": "网前诈骗艺术家", "highlight_moment": "心理大师：聪明地利用规则，玩弄对方心态。", "real_comment": "演技足拿奥斯卡，可惜这里是体育馆。" },
+        { "score_combination": "DA", "nickname": "景观位", "character_name": "人形网前筛子", "highlight_moment": "威慑力：你往那一站，对方心里多少会发虚。", "real_comment": "拦网效果跟挂个充气娃娃差不多。" }
+      ]
+    };
+
+    const state = {
+      phase: "start",
+      index: 0,
+      answers: [],
+      locked: false,
+      resultCombo: null,
+      rarityData: null,
+      rarityLoading: false,
+      rarityError: "",
+      booting: true
+    };
+
+    const app = document.getElementById("app");
+
+    function getCombination(answers) {
+      const counter = { A: 0, B: 0, C: 0, D: 0 };
+      answers.forEach((a) => { counter[a] += 1; });
+      const order = ["A", "B", "C", "D"];
+      const sorted = order.slice().sort((x, y) => {
+        if (counter[y] !== counter[x]) return counter[y] - counter[x];
+        return order.indexOf(x) - order.indexOf(y);
+      });
+      return sorted[0] + sorted[1];
+    }
+
+    function getResult(answers) {
+      const key = getCombination(answers);
+      const result = CHARACTER_RULES.character_matches.find((item) => item.score_combination === key);
+      return result || CHARACTER_RULES.character_matches[0];
+    }
+
+    async function recordResult(combo, answers) {
+      const answerDetail = QUESTIONS_DATA.questions.map((q, idx) => ({
+        question_id: q.id,
+        question_text: q.text,
+        option: answers[idx] || ""
+      }));
+      try {
+        await fetch("/api/result", {
+          method: "POST",
+          credentials: "include",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ combo, answers: answerDetail })
+        });
+      } catch (error) {
+        // 网络失败时不打断用户流程
+      }
+    }
+
+    async function loadRarityRanking() {
+      state.rarityLoading = true;
+      state.rarityError = "";
+      state.phase = "rarity";
+      render();
+
+      try {
+        const resp = await fetch("/api/rarity", { credentials: "include" });
+        if (!resp.ok) throw new Error("网络异常");
+        const data = await resp.json();
+        state.rarityData = data;
+      } catch (error) {
+        state.rarityError = "加载失败，请稍后再试";
+        state.rarityData = null;
+      }
+      state.rarityLoading = false;
+      render();
+    }
+
+    function startQuiz() {
+      state.phase = "quiz";
+      state.index = 0;
+      state.answers = [];
+      state.locked = false;
+      state.resultCombo = null;
+      render();
+    }
+
+    function restart() {
+      state.phase = "start";
+      state.index = 0;
+      state.answers = [];
+      state.locked = false;
+      state.resultCombo = null;
+      fetch("/api/clear-me", { method: "POST", credentials: "include" }).catch(() => {});
+      render();
+    }
+
+    function handleAnswer(optionId) {
+      if (state.locked) return;
+      state.locked = true;
+      if (document.activeElement && typeof document.activeElement.blur === "function") {
+        document.activeElement.blur();
+      }
+      state.answers.push(optionId);
+
+      setTimeout(() => {
+        if (state.index >= QUESTIONS_DATA.questions.length - 1) {
+          const combo = getCombination(state.answers);
+          state.resultCombo = combo;
+          recordResult(combo, state.answers);
+          state.phase = "result";
+        } else {
+          state.index += 1;
+        }
+        state.locked = false;
+        render();
+      }, 240);
+    }
+
+    const RESULT_EMOJI = {
+      AD: "🦍",
+      AB: "🎸",
+      AC: "💥",
+      BD: "🍬",
+      BA: "🫖",
+      BC: "🛡️",
+      CA: "📣",
+      CB: "🫠",
+      CD: "💎",
+      DB: "🧠",
+      DC: "🎭",
+      DA: "🧱"
+    };
+
+    const RESULT_THEME = {
+      AD: { soft: "#fff1eb", mid: "#fed7aa", main: "#ea580c" },
+      AB: { soft: "#f5f3ff", mid: "#ddd6fe", main: "#6d28d9" },
+      AC: { soft: "#fef9c3", mid: "#fde68a", main: "#ca8a04" },
+      BD: { soft: "#fdf2f8", mid: "#fbcfe8", main: "#db2777" },
+      BA: { soft: "#fef3c7", mid: "#fcd34d", main: "#92400e" },
+      BC: { soft: "#eff6ff", mid: "#bfdbfe", main: "#2563eb" },
+      CA: { soft: "#fff1f2", mid: "#fecdd3", main: "#e11d48" },
+      CB: { soft: "#f0fdf4", mid: "#bbf7d0", main: "#16a34a" },
+      CD: { soft: "#faf5ff", mid: "#e9d5ff", main: "#9333ea" },
+      DB: { soft: "#ecfeff", mid: "#a5f3fc", main: "#0e7490" },
+      DC: { soft: "#fff7ed", mid: "#fdba74", main: "#c2410c" },
+      DA: { soft: "#f0f9ff", mid: "#bae6fd", main: "#0369a1" }
+    };
+
+    function startPageHtml() {
+      return `
+        <section class="relative min-h-screen flex items-center justify-center px-6 overflow-hidden">
+          <div class="pointer-events-none absolute -top-20 -left-16 h-64 w-64 rounded-full bg-yellow-200/20 blur-2xl"></div>
+          <div class="pointer-events-none absolute -bottom-20 -right-12 h-64 w-64 rounded-full bg-sky-200/30 blur-2xl"></div>
+          <div class="w-full max-w-xl text-center relative">
+            <p class="text-5xl mb-6">🏐</p>
+            <h1 class="text-3xl md:text-4xl font-black tracking-[-0.02em] text-gray-900 mb-4 font-['Noto_Serif_SC']">排球赛场人格测试</h1>
+            <p class="text-base md:text-lg text-gray-600 leading-8 mb-10 font-medium max-w-lg mx-auto tracking-[0.01em]">这是小张的突发奇想，看看你是哪种排球人</p>
+            <button id="start-btn" class="inline-flex items-center justify-center rounded-full bg-gray-900 px-10 py-3 text-white text-base font-bold tracking-[0.08em] hover:bg-black transition">
+              开始测评
+            </button>
+          </div>
+        </section>
+      `;
+    }
+
+    function questionPageHtml() {
+      const q = QUESTIONS_DATA.questions[state.index];
+      const progress = Math.round((state.index / QUESTIONS_DATA.questions.length) * 100);
+      const optionButtons = q.options.map((opt) => `
+        <button
+          data-option="${opt.id}"
+          class="option-btn w-full rounded-2xl border border-gray-200 bg-white px-5 py-4 text-left text-gray-800 hover:border-accentBlue hover:bg-sky-50 transition"
+        >
+          <span class="inline-flex h-6 w-6 items-center justify-center rounded-full bg-yellow-100 text-yellow-700 text-xs font-bold mr-3">${opt.id}</span>
+          <span class="align-middle font-medium leading-7 tracking-[0.01em]">${opt.text}</span>
+        </button>
+      `).join("");
+
+      return `
+        <section class="relative min-h-screen flex items-center justify-center px-5 py-10 overflow-hidden">
+          <div class="pointer-events-none absolute top-16 -left-16 h-56 w-56 rounded-full bg-yellow-200/20 blur-2xl"></div>
+          <div class="pointer-events-none absolute bottom-10 -right-20 h-72 w-72 rounded-full bg-sky-200/25 blur-3xl"></div>
+          <div class="w-full max-w-2xl rounded-3xl border border-white/70 bg-white/85 backdrop-blur-sm shadow-[0_8px_40px_rgba(31,41,55,0.06)] p-5 md:p-8">
+            <div class="flex items-center justify-between text-sm mb-4">
+              <span class="inline-flex items-center gap-2 text-gray-600">
+                <span class="inline-flex h-6 w-6 items-center justify-center rounded-full bg-yellow-100 text-yellow-700">🏐</span>
+                <span class="font-semibold">第 ${state.index + 1} / ${QUESTIONS_DATA.questions.length} 题</span>
+              </span>
+              <span class="text-sky-700 font-bold">${progress}%</span>
+            </div>
+            <div class="h-2 w-full bg-gray-100 rounded-full overflow-hidden mb-8">
+              <div class="h-full bg-gradient-to-r from-yellow-400 to-sky-400 transition-all duration-300" style="width:${progress}%"></div>
+            </div>
+
+            <h2 class="text-xl md:text-3xl font-semibold text-gray-900 leading-[1.85] mb-8 font-['Noto_Serif_SC'] tracking-[0.01em] max-w-[24em]">${q.text}</h2>
+            <div class="space-y-3">${optionButtons}</div>
+          </div>
+        </section>
+      `;
+    }
+
+    function resultPageHtml() {
+      const result = getResult(state.answers);
+      const combo = state.resultCombo || getCombination(state.answers);
+      const emoji = RESULT_EMOJI[combo] || "🏐";
+      const theme = RESULT_THEME[combo] || RESULT_THEME.AB;
+      return `
+        <section class="relative min-h-screen flex items-center justify-center px-5 py-10 overflow-hidden">
+          <div class="pointer-events-none absolute -top-16 left-1/2 -translate-x-1/2 h-64 w-64 rounded-full bg-yellow-200/25 blur-3xl"></div>
+          <div class="pointer-events-none absolute -bottom-20 right-0 h-80 w-80 rounded-full bg-sky-200/20 blur-3xl"></div>
+          <div class="w-full max-w-xl rounded-3xl border border-gray-200 bg-white shadow-sm overflow-hidden relative">
+            <div class="px-7 py-8 text-center border-b border-gray-100" style="background: linear-gradient(180deg, ${theme.soft} 0%, ${theme.mid} 100%);">
+              <p class="text-xs tracking-[0.24em] text-gray-500 mb-2 font-bold">YOUR VOLLEYBALL TYPE</p>
+              <p class="text-5xl mb-3">${emoji}</p>
+              <h2 class="text-4xl md:text-5xl font-black mb-3 tracking-[-0.015em] font-['Noto_Serif_SC']" style="color:${theme.main};">${result.nickname}</h2>
+              <p class="inline-block rounded-full px-4 py-1 text-sm font-semibold tracking-[0.04em]" style="border:1px solid ${theme.main}; color:${theme.main}; background:${theme.soft};">${result.character_name}</p>
+            </div>
+
+            <div class="px-7 py-6 border-b border-gray-100">
+              <p class="text-xs tracking-[0.18em] mb-2 font-bold" style="color:${theme.main};">⚡ 高光时刻</p>
+              <p class="text-gray-800 leading-[1.95] text-[17px] font-medium tracking-[0.01em] max-w-[26em]">${result.highlight_moment}</p>
+            </div>
+
+            <div class="px-7 py-6">
+              <p class="text-xs tracking-[0.18em] mb-2 font-bold" style="color:${theme.main};">🎯 真实点评</p>
+              <p class="text-gray-600 leading-[1.9] italic text-[16px] tracking-[0.01em] max-w-[26em]">${result.real_comment}</p>
+            </div>
+
+            <div class="px-7 pb-7 text-center">
+              <p class="text-sm text-gray-500 mb-5 tracking-[0.02em]">长按截屏分享这张人格卡片</p>
+              <div class="flex flex-wrap items-center justify-center gap-3">
+                <button id="reward-btn" class="rounded-full border border-gray-300 px-6 py-2 text-sm text-gray-700 hover:bg-gray-50 transition">领取奖励</button>
+                <button id="rarity-btn" class="rounded-full border border-gray-300 px-6 py-2 text-sm text-gray-700 hover:bg-gray-50 transition">查看稀有度</button>
+                <button id="restart-btn" class="rounded-full border border-gray-300 px-6 py-2 text-sm text-gray-700 hover:bg-gray-50 transition">再测一次</button>
+              </div>
+            </div>
+          </div>
+        </section>
+      `;
+    }
+
+    function rewardPageHtml() {
+      return `
+        <section class="relative min-h-screen flex items-center justify-center px-5 py-10 overflow-hidden">
+          <div class="pointer-events-none absolute -top-16 left-1/2 -translate-x-1/2 h-64 w-64 rounded-full bg-yellow-200/25 blur-3xl"></div>
+          <div class="w-full max-w-xl rounded-3xl border border-gray-200 bg-white shadow-sm overflow-hidden relative">
+            <div class="bg-gradient-to-b from-yellow-50 to-sky-50 px-7 py-8 text-center border-b border-gray-100">
+              <p class="text-5xl mb-3">🎁</p>
+              <h2 class="text-3xl md:text-4xl font-black mb-2 tracking-[-0.015em] font-['Noto_Serif_SC'] text-gray-900">领取奖励</h2>
+              <p class="text-sm text-gray-500 tracking-[0.08em]">REWARD UNLOCKED</p>
+            </div>
+            <div class="px-7 py-8">
+              <p class="text-gray-800 leading-[1.95] text-[17px] font-medium tracking-[0.01em]">
+                奖励就是请把它分享给你身边更多的排球人，
+                祝您扣球个个钉地板，拦网一抓一个准。
+              </p>
+            </div>
+            <div class="px-7 pb-7 text-center">
+              <button id="back-result-btn" class="rounded-full border border-gray-300 px-6 py-2 text-sm text-gray-700 hover:bg-gray-50 transition">返回结果页</button>
+            </div>
+          </div>
+        </section>
+      `;
+    }
+
+    function rarityPageHtml() {
+      if (state.rarityLoading) {
+        return `
+          <section class="relative min-h-screen flex items-center justify-center px-5 py-10 overflow-hidden">
+            <div class="w-full max-w-xl rounded-3xl border border-gray-200 bg-white shadow-sm overflow-hidden relative px-7 py-16 text-center">
+              <p class="text-4xl mb-3">📊</p>
+              <p class="text-gray-700 font-semibold">正在统计全体测试结果...</p>
+            </div>
+          </section>
+        `;
+      }
+
+      if (state.rarityError) {
+        return `
+          <section class="relative min-h-screen flex items-center justify-center px-5 py-10 overflow-hidden">
+            <div class="w-full max-w-xl rounded-3xl border border-gray-200 bg-white shadow-sm overflow-hidden relative px-7 py-16 text-center">
+              <p class="text-4xl mb-3">⚠️</p>
+              <p class="text-gray-700 font-semibold mb-5">${state.rarityError}</p>
+              <button id="back-result-btn" class="rounded-full border border-gray-300 px-6 py-2 text-sm text-gray-700 hover:bg-gray-50 transition">返回结果页</button>
+            </div>
+          </section>
+        `;
+      }
+
+      const data = state.rarityData || { total: 0, list: [] };
+      const rows = data.list.map((item, index) => {
+        const emoji = RESULT_EMOJI[item.combo] || "🏐";
+        return `
+          <div class="flex items-center justify-between rounded-2xl border border-gray-100 px-4 py-3">
+            <div class="flex items-center gap-3 min-w-0">
+              <span class="text-sm font-bold text-gray-500 w-6">${index + 1}</span>
+              <span class="text-xl">${emoji}</span>
+              <div class="min-w-0">
+                <p class="font-semibold text-gray-900 truncate">${item.nickname}</p>
+                <p class="text-xs text-gray-500 truncate">${item.character_name}</p>
+              </div>
+            </div>
+            <div class="text-right">
+              <p class="font-bold text-gray-800">${item.ratio}%</p>
+              <p class="text-xs text-gray-500">${item.count} 人</p>
+            </div>
+          </div>
+        `;
+      }).join("");
+
+      return `
+        <section class="relative min-h-screen flex items-center justify-center px-5 py-10 overflow-hidden">
+          <div class="pointer-events-none absolute -top-16 left-1/2 -translate-x-1/2 h-64 w-64 rounded-full bg-sky-200/25 blur-3xl"></div>
+          <div class="w-full max-w-xl rounded-3xl border border-gray-200 bg-white shadow-sm overflow-hidden relative">
+            <div class="bg-gradient-to-b from-sky-50 to-white px-7 py-8 text-center border-b border-gray-100">
+              <p class="text-5xl mb-3">📊</p>
+              <h2 class="text-3xl md:text-4xl font-black mb-2 tracking-[-0.015em] font-['Noto_Serif_SC'] text-gray-900">人格稀有度排行</h2>
+              <p class="text-sm text-gray-500">当前总样本：${data.total} 人</p>
+            </div>
+            <div class="px-5 py-5 space-y-2 max-h-[55vh] overflow-y-auto">
+              ${rows}
+            </div>
+            <div class="px-7 pb-7 text-center">
+              <button id="back-result-btn" class="rounded-full border border-gray-300 px-6 py-2 text-sm text-gray-700 hover:bg-gray-50 transition">返回结果页</button>
+            </div>
+          </div>
+        </section>
+      `;
+    }
+
+    function bindEvents() {
+      const startBtn = document.getElementById("start-btn");
+      if (startBtn) startBtn.addEventListener("click", startQuiz);
+
+      const restartBtn = document.getElementById("restart-btn");
+      if (restartBtn) restartBtn.addEventListener("click", restart);
+
+      const rewardBtn = document.getElementById("reward-btn");
+      if (rewardBtn) rewardBtn.addEventListener("click", () => {
+        state.phase = "reward";
+        render();
+      });
+
+      const rarityBtn = document.getElementById("rarity-btn");
+      if (rarityBtn) rarityBtn.addEventListener("click", loadRarityRanking);
+
+      const backResultBtn = document.getElementById("back-result-btn");
+      if (backResultBtn) backResultBtn.addEventListener("click", () => {
+        state.phase = "result";
+        render();
+      });
+
+      document.querySelectorAll("[data-option]").forEach((btn) => {
+        btn.addEventListener("click", () => handleAnswer(btn.dataset.option));
+      });
+    }
+
+    function render() {
+      if (state.booting) {
+        app.innerHTML = `
+          <section class="min-h-screen flex items-center justify-center px-6">
+            <div class="text-center">
+              <p class="text-4xl mb-4">🏐</p>
+              <p class="text-gray-600 font-medium">正在恢复你的测试结果...</p>
+            </div>
+          </section>
+        `;
+        return;
+      }
+      if (state.phase === "start") app.innerHTML = startPageHtml();
+      if (state.phase === "quiz") app.innerHTML = questionPageHtml();
+      if (state.phase === "result") app.innerHTML = resultPageHtml();
+      if (state.phase === "reward") app.innerHTML = rewardPageHtml();
+      if (state.phase === "rarity") app.innerHTML = rarityPageHtml();
+      bindEvents();
+    }
+
+    // 自动恢复（不落地本地存储）：从服务端读取该访客上次结果
+    async function restoreFromServer() {
+      try {
+        const resp = await fetch("/api/me", { credentials: "include" });
+        if (!resp.ok) return;
+        const data = await resp.json();
+        const last = data && data.last_result ? data.last_result : null;
+        if (!last) return;
+        const combo = typeof last.combo === "string" ? last.combo.toUpperCase() : null;
+        const answersDetail = Array.isArray(last.answers) ? last.answers : null;
+        if (!answersDetail || answersDetail.length !== QUESTIONS_DATA.questions.length) return;
+        const answers = answersDetail.map((x) => String(x.option || ""));
+        state.answers = answers;
+        state.resultCombo = combo || getCombination(answers);
+        state.phase = "result";
+      } catch (e) {
+        // ignore
+      } finally {
+        state.booting = false;
+        render();
+      }
+    }
+
+    render();
+    restoreFromServer();
+  </script>
+</body>
+</html>
